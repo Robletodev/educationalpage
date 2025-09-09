@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Royal School</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* CSS 100% Responsive para el Navbar */
+        .navbar {
+            padding: 0.5rem 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            display: none;
+            /* Ocultar ya que no se usa */
+        }
+
+        .logo img {
+            max-width: 100%;
+            height: auto;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav {
+            align-items: center;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #0d6efd !important;
+        }
+
+        .dropdown-menu {
+            /* border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: none;*/
+            position: absolute;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            padding: 10px 0;
+            width: 200px;
+            z-index: 100;
+            list-style: none;
+        }
+
+        .dropdown-item {
+            /*padding: 0.5rem 1rem;*/
+            transition: background-color 0.3s ease;
+            padding: 8px 20px;
+            display: block;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            display: block;
+        }
+
+        .classroomvirtual {
+            display: flex;
+            align-items: center;
+        }
+
+        .classroomvirtual img {
+            margin-right: 0.5rem;
+            max-width: 70px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .classroomvirtual img:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-outline-primary {
+            border-width: 2px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(13, 110, 253, 0.2);
+        }
+
+        .navbar-toggler {
+            border: none;
+            padding: 0.25rem 0.5rem;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: #3498db;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: #2980b9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #3498db;
+            color: #3498db;
+        }
+
+        .btn-outline:hover {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.25rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            font-size: 1.125rem;
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: #3498db;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: #2c3e50;
+            font-weight: 500;
+            position: relative;
+            display: block;
+            padding: 0.5rem 0;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #3498db;
+            left: 0;
+            bottom: 0;
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #2c3e50;
+        }
+
+
+
+        /* Hero Section con imagen de fondo */
+        .hero {
+            padding: 6rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Opciones de fondo - ELIGE UNA de estas clases para el hero */
+        .hero.bg-nature {
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') no-repeat center center/cover;
+        }
+
+        .hero.bg-city {
+            background: url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1844&q=80') no-repeat center center/cover;
+        }
+
+        .hero.bg-mountains {
+            background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') no-repeat center center/cover;
+        }
+
+        .hero.bg-gradient {
+            background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            padding: 0 1rem;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.25rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            animation: fadeIn 1.5s ease;
+            flex-wrap: wrap;
+        }
+
+        .hero-buttons .btn {
+            margin: 0 0.5rem;
+            min-width: 180px;
+        }
+
+        .bg-selector {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .bg-option {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .bg-option:hover {
+            transform: scale(1.1);
+        }
+
+        .bg-option.active {
+            border-color: #3498db;
+        }
+
+        .bg-option.nature {
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') no-repeat center center/cover;
+        }
+
+        .bg-option.city {
+            background: url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1844&q=80') no-repeat center center/cover;
+        }
+
+        .bg-option.mountains {
+            background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') no-repeat center center/cover;
+        }
+
+        .bg-option.gradient {
+            background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+        }
+
+
+        /* Hero 40% más pequeño */
+        .hero {
+            background: url('assets/img/header.jpg') no-repeat center center/cover !important;
+            color: white;
+            position: relative;
+            min-height: 60vh;
+            /* Reducido en 40% (de 100vh a 60vh) */
+            padding: 3rem 0;
+            /* Reducido de 6rem 0 4rem a 3rem 0 */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .hero>.container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            /* Reducido de 3rem */
+            margin-bottom: 1rem;
+            /* Reducido de 1.25rem */
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            /* Reducido de 1.25rem */
+            margin-bottom: 1.5rem;
+            /* Reducido de 2rem */
+        }
+
+        .hero-buttons {
+            margin-bottom: 1rem;
+            /* Espacio adicional para el selector de fondo */
+        }
+
+        .hero h1,
+        .hero p {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero .btn {
+            background-color: #3498db;
+            border-color: #3498db;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            padding: 10px 20px;
+            /* Ligeramente más pequeño */
+        }
+
+        .hero .btn-outline {
+            background-color: transparent;
+            border-color: white;
+            color: white;
+        }
+
+        .hero .btn-outline:hover {
+            background-color: white;
+            color: #3498db;
+        }
+
+        /* Ajustes para el selector de fondo */
+        .bg-selector {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        .bg-option {
+            width: 60px;
+            /* Reducido de 80px */
+            height: 60px;
+            /* Reducido de 80px */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            /* Slight overlay for better text contrast */
+            z-index: 1;
+        }
+
+        .hero>.container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1,
+        .hero p {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero .btn {
+            background-color: #3498db;
+            border-color: #3498db;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero .btn-outline {
+            background-color: transparent;
+            border-color: white;
+            color: white;
+        }
+
+        .hero .btn-outline:hover {
+            background-color: white;
+            color: #3498db;
+        }
+
+        /* Ajustes para el selector de fondo */
+        .bg-selector {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero h1,
+        .hero p {
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero .btn {
+            background-color: #3498db;
+            border-color: #3498db;
+        }
+
+        .hero .btn-outline {
+            background-color: transparent;
+            border-color: white;
+            color: white;
+        }
+
+        .hero .btn-outline:hover {
+            background-color: white;
+            color: #3498db;
+        }
+
+        /* Carrusel de Tarjetas con Imágenes */
+        .cards-carousel {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-card {
+            flex: 0 0 calc(33.333% - 20px);
+            margin: 0 10px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .carousel-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-img {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7));
+            z-index: 1;
+        }
+
+        .card-img i {
+            position: relative;
+            z-index: 2;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Imágenes de fondo para las tarjetas */
+        .card-web .card-img {
+            background: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1715&q=80') no-repeat center center/cover;
+        }
+
+        .card-mobile .card-img {
+            background: url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80') no-repeat center center/cover;
+        }
+
+        .card-marketing .card-img {
+            background: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1715&q=80') no-repeat center center/cover;
+        }
+
+        .card-design .card-img {
+            background: url('https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80') no-repeat center center/cover;
+        }
+
+        .card-seo .card-img {
+            background: url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1768&q=80') no-repeat center center/cover;
+        }
+
+        .card-cloud .card-img {
+            background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1772&q=80') no-repeat center center/cover;
+        }
+
+        .card-content {
+            padding: 20px;
+            position: relative;
+        }
+
+        .card-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #502c40;
+        }
+
+        .card-content p {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            background: #ddd;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: #3498db;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .feature-card p {
+            color: #7f8c8d;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            width: 100%;
+            padding: 0 1rem;
+        }
+
+        .testimonial {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 0 auto;
+            max-width: 700px;
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-text {
+            font-size: 1.125rem;
+            font-style: italic;
+            margin-bottom: 1.25rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 5rem 0;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            width: 100%;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            min-width: 250px;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-form button {
+            padding: 15px 25px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background 0.3s ease;
+            margin-left: 0;
+        }
+
+        .newsletter-form button:hover {
+            background: #2980b9;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3.75rem 0 1.875rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.25rem;
+            position: relative;
+            padding-bottom: 0.625rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: #3498db;
+        }
+
+        .footer-section p {
+            margin-bottom: 0.9375rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.625rem;
+        }
+
+        .footer-links ul li a {
+            color: #ecf0f1;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: #3498db;
+            padding-left: 5px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 0.9375rem;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: #3498db;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.875rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (min-width: 576px) {
+            .carousel-card {
+                flex: 0 0 calc(50% - 2rem);
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .carousel-card {
+                flex: 0 0 calc(33.333% - 2rem);
+            }
+
+            .newsletter-form {
+                flex-wrap: nowrap;
+            }
+
+            .newsletter-form input {
+                border-radius: 50px 0 0 50px;
+                margin-bottom: 0;
+            }
+
+            .newsletter-form button {
+                border-radius: 0 50px 50px 0;
+                margin-left: -1px;
+            }
+
+            .hero-buttons {
+                flex-direction: row;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .header-content {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            nav ul {
+                margin-top: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem 0;
+            }
+
+            .logo {
+                margin-bottom: 1rem;
+            }
+
+            nav ul {
+                justify-content: center;
+                margin-top: 1rem;
+                width: 100%;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0.75rem;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                top: 1.25rem;
+                right: 1.25rem;
+            }
+
+            .hero {
+                padding: 4rem 0 2rem;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.125rem;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .section-title p {
+                font-size: 1rem;
+            }
+
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .testimonial {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .bg-option {
+                width: 60px;
+                height: 60px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .carousel-card {
+                flex: 0 0 calc(100% - 1rem);
+                margin: 0 0.5rem;
+            }
+
+            .card-img {
+                height: 150px;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Clase para menú móvil activo */
+        .nav-active {
+            display: flex !important;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="logo">
+                <img src="assets/img/logo-IRS.svg" width="180" height="80" alt="Logo">
+                <link rel="icon" type="image/jpg" href="assets/icons/IRS.ico"/>
+            </div>
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.royal.ed.cr/contacto">Matricula</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Experiencia Educativa
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item"
+                                    href="https://drive.google.com/file/d/14s_uJWDvkAoZXlrmmq4f_-GFnANaa4in/view">Reglamento</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                    href="https://drive.google.com/file/d/1SZjsm0VNK9xM4MjhzmWW6rtSAiAecDsU/view">Calendario
+                                    Escolar</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Programe su visita</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutUs.html">Acerca de Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="blog.html">Blog</a>
+                    </li>
+                </ul>
+                <div class="classroomvirtual">
+                    <a href="https://aulavirtualroyal.virtual-classes-online.com/en/accounts/signin/" class="d-flex"
+                        role="search" style="text-decoration: none">
+                        <img src="assets/img/metaverso.gif" width="70" height="60" alt="Logo">
+                        <button class="btn btn-outline-primary" type="">Aula Virtual</button>
+                    </a>
+                </div>
+            </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero bg-gradient">
+        <div class="container">
+            <div class="hero-content">
+                <p>Curso Lectivo 2026</p>
+                <h1>Formación para cumplir sueños </h1>
+                <p>Preescolar, primaria y secundaria | Robotica e Informatica</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn">Inscripciones</a>
+                    <a href="#" class="btn btn-outline">Ver Programas lectivos</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Cards Carousel -->
+    <section class="cards-carousel">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuesta Cultura forma excelencias academicas Internacionales</h2>
+                <p>Valores que Perduran...</p>
+            </div>
+
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <!-- Tarjeta 1 -->
+                    <div class="carousel-card card-web">
+                        <div class="card-img">
+                        </div>
+                        <div class="card-content">
+                            <h2>Educación</h2>
+                            <h3>Personalizada</h3>
+                            <p>Verdadera atención personalizada con grupos de máximo 12 estudiantes por aula.</p>
+
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 2 -->
+                    <div class="carousel-card card-mobile">
+                        <div class="card-img">
+                        </div>
+                        <div class="card-content">
+                            <h2>Aprendizaje</h2>
+                            <h3>Interactivo</h3>
+                            <p>Educación de calidad a través de la tecnología de punta y los programas de educación
+                                interactiva y virtual más avanzados.</p>
+
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 3 -->
+                    <div class="carousel-card card-marketing">
+                        <div class="card-img">
+                        </div>
+                        <div class="card-content">
+                            <h2>Enseñanza</h2>
+                            <h3>Políglota</h3>
+                            <p>Desarrollo neurolingüístico mediante el aprendizaje de 5 idiomas desde nivel inicial y
+                                formación en español e inglés 100% bilingüe.</p>
+                        </div>
+                    </div>
+
+
+                    <!-- Tarjeta 4 -->
+                    <div class="carousel-card card-seo">
+                        <div class="card-img">
+                        </div>
+                        <div class="card-content">
+                            <h2>Enfoque</h2>
+                            <h3>Ambiental</h3>
+                            <p>Somos Bandera Azul Ecológica desde 2013.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 5 -->
+                    <div class="carousel-card card-cloud">
+                        <div class="card-img">
+                        </div>
+                        <div class="card-content">
+                            <h2>Estímulo</h2>
+                            <h3>Creativo</h3>
+                            <p>Clases que estimulan el arte, el dibujo, el deporte y la música.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-nav">
+                <div class="carousel-dot active"></div>
+                <div class="carousel-dot"></div>
+                <div class="carousel-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Características Principales</h2>
+                <p>Descubre por qué somos la mejor opción para tu proyecto</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3>Rápido y Eficiente</h3>
+                    <p>Desarrollamos soluciones optimizadas para máximo rendimiento.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Completamente Responsive</h3>
+                    <p>Tu sitio se verá perfecto en cualquier dispositivo.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Seguro y Confiable</h3>
+                    <p>Implementamos las mejores prácticas de seguridad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Lo que Dicen Nuestros Clientes</h2>
+                <p>Testimonios reales de empresas que confiaron en nosotros</p>
+            </div>
+            <div class="testimonial-container">
+                <div class="testimonial">
+                    <p class="testimonial-text">"El equipo de ResponsiveDesign transformó por completo nuestra presencia
+                        digital. Ahora tenemos un sitio web que funciona perfectamente en todos los dispositivos y ha
+                        aumentado nuestras conversiones en un 40%."</p>
+                    <p class="testimonial-author">- María González, CEO de TechSolutions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mantente Actualizado</h2>
+                <p>Suscríbete a nuestro newsletter para recibir tips y noticias</p>
+            </div>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Tu correo electrónico" required>
+                <button type="submit">Suscribirse</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sobre Nosotros</h3>
+                    <p>Especialistas en diseño y desarrollo de software responsive con más de 10 años de experiencia.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <div class="footer-links">
+                        <ul>
+                            <li><a href="#">Inicio</a></li>
+                            <li><a href="#">Servicios</a></li>
+                            <li><a href="#">Portafolio</a></li>
+                            <li><a href="#">Nosotros</a></li>
+                            <li><a href="#">Contacto</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Principal #123, Ciudad</p>
+                    <p><i class="fas fa-phone"></i> +506 234 567 8900</p>
+                    <p><i class="fas fa-envelope"></i> misitio@responsivedesign.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ResponsiveDesign. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript para el menú móvil
+        document.getElementById('menuToggle').addEventListener('click', function () {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('nav-active');
+        });
+
+        // JavaScript para el selector de fondo
+        document.querySelectorAll('.bg-option').forEach(option => {
+            option.addEventListener('click', function () {
+                const bgType = this.getAttribute('data-bg');
+                document.querySelector('.hero').className = 'hero bg-' + bgType;
+
+                document.querySelectorAll('.bg-option').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+        // JavaScript básico para el carrusel
+        document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+            dot.addEventListener('click', function () {
+                const track = document.querySelector('.carousel-track');
+                track.style.transform = `translateX(-${index * 100}%)`;
+
+                document.querySelectorAll('.carousel-dot').forEach(d => {
+                    d.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <script>
+        // JavaScript para el carrusel de tarjetas
+        document.addEventListener('DOMContentLoaded', function () {
+            const track = document.querySelector('.carousel-track');
+            const cards = document.querySelectorAll('.carousel-card');
+            const dots = document.querySelectorAll('.carousel-dot');
+
+            let currentIndex = 0;
+            const cardWidth = cards[0].offsetWidth + 20; // Ancho de la tarjeta + margen
+
+            // Función para mover el carrusel
+            function moveCarousel(index) {
+                track.style.transform = `translateX(-${index * cardWidth}px)`;
+
+                // Actualizar dots activos
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+
+                currentIndex = index;
+            }
+
+            // Event listeners para los dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    moveCarousel(index);
+                });
+            });
+
+            // Auto slide cada 5 segundos
+            setInterval(() => {
+                let nextIndex = (currentIndex + 1) % dots.length;
+                moveCarousel(nextIndex);
+            }, 4000);
+
+        });
+    </script>
+</body>
+
+</html>

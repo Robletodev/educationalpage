@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | International Royal School</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: #2980b9;
+        }
+        
+        /* Header */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: #3498db;
+        }
+        
+        .logo img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        nav ul li a:hover {
+            color: #3498db;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Layout principal con sidebar */
+        .content-with-sidebar {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        /* Blog Posts */
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .post {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .post:hover {
+            transform: translateY(-5px);
+        }
+        
+        .post-img {
+            height: 200px;
+            background-color: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .post-content {
+            padding: 20px;
+        }
+        
+        .post-date {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .post-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .post-excerpt {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        
+        .read-more {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        .read-more:hover {
+            background-color: #2980b9;
+            color: white;
+        }
+        
+        /* Sidebar 
+        .sidebar {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar-title {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .categories ul {
+            list-style: none;
+        }
+        
+        .categories ul li {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .categories ul li a {
+            color: #7f8c8d;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .categories ul li a:hover {
+            color: #3498db;
+        }*/
+        
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            padding: 50px 0;
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .newsletter h2 {
+            margin-bottom: 20px;
+        }
+        
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 25px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 16px;
+        }
+        
+        .newsletter-form button {
+            padding: 12px 20px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: #ecf0f1;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+        }
+        
+        /* ========================== */
+        /* RESPONSIVE DESIGN */
+        /* ========================== */
+        
+        /* Tablets y dispositivos medianos */
+        @media (max-width: 1024px) {
+            .content-with-sidebar {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+           /* .sidebar {
+                position: static;
+                order: 2;
+            }*/
+            
+            .blog-posts {
+                order: 1;
+            }
+            
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+        
+        /* Tablets pequeñas y móviles grandes */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px 0;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+                justify-content: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 15px;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+                padding: 0 15px;
+            }
+            
+            .blog-posts {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            .post-content {
+                padding: 15px;
+            }
+            
+            .post-title {
+                font-size: 18px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-form button {
+                border-radius: 4px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-section {
+                margin-bottom: 30px;
+                text-align: center;
+            }
+        }
+        
+        /* Móviles */
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .hero {
+                padding: 40px 0;
+                margin-bottom: 30px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .blog-posts {
+                grid-template-columns: 1fr;
+            }
+            
+            .post-img {
+                height: 180px;
+            }
+            
+            .sidebar {
+                padding: 20px;
+            }
+            
+            .sidebar-title {
+                font-size: 20px;
+            }
+            
+            .newsletter {
+                padding: 40px 0;
+            }
+            
+            .newsletter h2 {
+                font-size: 24px;
+            }
+            
+            footer {
+                padding: 30px 0;
+            }
+        }
+        
+        /* Móviles muy pequeños */
+        @media (max-width: 380px) {
+            .logo {
+                font-size: 20px;
+            }
+            
+            .logo img {
+                width: 150px;
+                height: 65px;
+            }
+            
+            .hero h1 {
+                font-size: 24px;
+            }
+            
+            .post-content {
+                padding: 12px;
+            }
+            
+            .post-title {
+                font-size: 16px;
+            }
+            
+            .post-excerpt {
+                font-size: 14px;
+            }
+            
+            .read-more {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="homepageDos.html">
+                        <img src="assets/img/logo-IRS.svg" width="180" height="80" alt="Logo">
+                    </a>   
+                </div>
+                <div class="logo">Blog <span> International Royal School</span></div>
+                <link rel="icon" type="image/jpg" href="assets/icons/IRS.ico"/>
+                <nav>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Artículos</a></li>
+                        <li><a href="#">Categorías</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Bienvenido a nuestro Blog</h1>
+            <p>Un espacio donde International Royal School comparte ideas, experiencias y conocimientos sobre diversos temas de interés.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="">
+            <main>
+                <div class="blog-posts">
+                    <!-- Post 1 -->
+                    <article class="post">
+                        <div class="post-img">Imagen del Post</div>
+                        <div class="post-content">
+                            <div class="post-date">15 de Mayo, 2023</div>
+                            <h2 class="post-title">Cómo comenzar con el desarrollo web</h2>
+                            <p class="post-excerpt">Aprende los conceptos básicos para iniciarte en el mundo del desarrollo web frontend y backend.</p>
+                            <a href="#" class="read-more">Leer más</a>
+                        </div>
+                    </article>
+
+                    <!-- Post 2 -->
+                    <article class="post">
+                        <div class="post-img">Imagen del Post</div>
+                        <div class="post-content">
+                            <div class="post-date">10 de Mayo, 2023</div>
+                            <h2 class="post-title">Los mejores recursos para diseñadores UX/UI</h2>
+                            <p class="post-excerpt">Recopilación de herramientas, bibliotecas y frameworks para diseñadores de experiencia de usuario.</p>
+                            <a href="#" class="read-more">Leer más</a>
+                        </div>
+                    </article>
+
+                    <!-- Post 3 -->
+                    <article class="post">
+                        <div class="post-img">Imagen del Post</div>
+                        <div class="post-content">
+                            <div class="post-date">5 de Mayo, 2023</div>
+                            <h2 class="post-title">Introducción a JavaScript moderno</h2>
+                            <p class="post-excerpt">Descubre las características más importantes de ECMAScript 6 y cómo usarlas en tus proyectos.</p>
+                            <a href="#" class="read-more">Leer más</a>
+                        </div>
+                    </article>
+
+                    <!-- Post 4 -->
+                    <article class="post">
+                        <div class="post-img">Imagen del Post</div>
+                        <div class="post-content">
+                            <div class="post-date">28 de Abril, 2023</div>
+                            <h2 class="post-title">Optimización de rendimiento web</h2>
+                            <p class="post-excerpt">Técnicas avanzadas para mejorar la velocidad y eficiencia de tus aplicaciones web.</p>
+                            <a href="#" class="read-more">Leer más</a>
+                        </div>
+                    </article>
+
+                    <!-- Post 5 -->
+                    <article class="post">
+                        <div class="post-img">Imagen del Post</div>
+                        <div class="post-content">
+                            <div class="post-date">20 de Abril, 2023</div>
+                            <h2 class="post-title">Diseño responsive de movil y web</h2>
+                            <p class="post-excerpt">Cómo crear layouts modernos y completamente responsive con las técnicas más actuales.</p>
+                            <a href="#" class="read-more">Leer más</a>
+                        </div>
+                    </article>
+
+                    <!-- Post 6 -->
+                    <article class="post">
+                        <div class="post-img">Imagen del Post</div>
+                        <div class="post-content">
+                            <div class="post-date">15 de Abril, 2023</div>
+                            <h2 class="post-title">Introducción a React.js</h2>
+                            <p class="post-excerpt">Aprende los conceptos fundamentales de React y crea tu primera aplicación.</p>
+                            <a href="#" class="read-more">Leer más</a>
+                        </div>
+                    </article>
+                </div>
+            </main>
+
+            <!--  <aside class="sidebar">
+                <h3 class="sidebar-title">Categorías</h3>
+                <div class="categories">
+                    <ul>
+                        <li><a href="#">Desarrollo Web <span>(12)</span></a></li>
+                        <li><a href="#">Diseño UX/UI <span>(8)</span></a></li>
+                        <li><a href="#">Frontend <span>(15)</span></a></li>
+                        <li><a href="#">Backend <span>(10)</span></a></li>
+                        <li><a href="#">Desarrollo Movil <span>(7)</span></a></li>
+                        <li><a href="#">Desarrollo de Video Juegos Multiplataforma <span>(5)</span></a></li>
+                    </ul>
+                </div>
+            </aside>-->
+            
+        </div>
+    </div>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Suscríbete a mi newsletter</h2>
+            <p>Recibe las últimas actualizaciones y artículos directamente en tu correo electrónico.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Tu correo electrónico" required>
+                <button type="submit">Suscribirse</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Acerca de</h3>
+                    <p>MiBlog es un espacio donde comparto conocimientos sobre desarrollo web, diseño y tecnología.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces rápidos</h3>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Artículos</a></li>
+                        <li><a href="#">Categorías</a></li>
+                        <li><a href="#">Acerca de</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li>Email: info@miblog.com</li>
+                        <li>Teléfono: +506 123 456 789</li>
+                        <li>Dirección: Madrid, España</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MiBlog. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript para funcionalidades básicas
+        document.addEventListener('DOMContentLoaded', function() {
+            // Formulario de newsletter
+            const newsletterForm = document.querySelector('.newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.querySelector('input[type="email"]').value;
+                    alert(`¡Gracias por suscribirte con el email: ${email}!`);
+                    this.reset();
+                });
+            }
+            
+            // Simular carga de posts (en una aplicación real, esto vendría de una API)
+            console.log('Blog cargado correctamente');
+        });
+    </script>
+</body>
+</html>
